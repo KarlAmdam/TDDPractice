@@ -9,5 +9,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="org.junit.jupiter:junit-jupiter:5.5.1" level="project" />
+    <orderEntry type="library" name="net.bytebuddy:byte-buddy-agent:1.9.10" level="project" />
+    <orderEntry type="library" name="net.bytebuddy:byte-buddy:1.9.10" level="project" />
+    <orderEntry type="library" name="org.mockito:mockito-core:2.28.2" level="project" />
+    <orderEntry type="library" name="org.objenesis:objenesis:2.6" level="project" />
   </component>
 </module>

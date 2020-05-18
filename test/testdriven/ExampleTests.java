@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ExampleTests {
 
     @Test
-    public void checkAValidISBN() {
+    public void checkAValid10DigitISBNNumber() {
         ValidateISBN validator = new ValidateISBN();
         boolean result = validator.checkISBN("0140449116");
         assertTrue(result, "first value");
@@ -16,9 +16,32 @@ public class ExampleTests {
     }
 
     @Test
-    public void checkAnInvalidValidISBN() {
+    public void checkAValid13DigitISBNNumber () {
+        ValidateISBN validator = new ValidateISBN();
+        boolean result = validator.checkISBN("9781853260087");
+        assertTrue(result, "first value");
+        result = validator.checkISBN("9781853267338");
+        assertTrue(result, "second value");
+    }
+
+    @Test
+    public void ISBNNumbersEndingWithXAreValid () {
+        ValidateISBN validator = new ValidateISBN();
+        boolean result = validator.checkISBN("012000030X");
+        assertTrue(result);
+    }
+
+    @Test
+    public void checkAnInvalid10DigitISBN() {
         ValidateISBN validator = new ValidateISBN();
         boolean result = validator.checkISBN("0140449216");
+        assertFalse(result);
+    }
+
+    @Test
+    public void checkAnInvalid13DigitISBN() {
+        ValidateISBN validator = new ValidateISBN();
+        boolean result = validator.checkISBN("9781853260067");
         assertFalse(result);
     }
 
@@ -34,5 +57,14 @@ public class ExampleTests {
         ValidateISBN validator = new ValidateISBN();
         boolean result = validator.checkISBN("0140449216");
         assertFalse(result);
+    }
+
+    @Test
+    public void nonNumericISBNsAreNotAllowed() {
+        ValidateISBN validator = new ValidateISBN();
+        assertThrows(NumberFormatException.class,
+                () -> {
+                    validator.checkISBN("helloworld");
+                });
     }
 }
